@@ -1,6 +1,4 @@
 'use client'
-import Header from "./Header";
-import { TrendingUp } from "lucide-react"
 import {
   Label,
   PolarGrid,
