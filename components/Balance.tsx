@@ -34,7 +34,7 @@ export default function Balance(balance: BalanceProp) {
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="border bg-white/20 text-white p-4 rounded-lg w-52">
+      <div className="border bg-white text-black p-4 rounded-lg w-52">
         <h1 className="font-bold">{balance.name}</h1>
         {editMoney ? (
           <div className="flex items-center">
@@ -44,7 +44,7 @@ export default function Balance(balance: BalanceProp) {
               value={money}
               onChange={(evt) => onChangeMoney(evt.target.value)}
               ref={inputRef}
-              onKeyDown={(key) => {key.code == 'Enter' ? setEditMoney(false) : null}}
+              onKeyDown={(key) => {key.code === 'Enter' || key.code === 'NumpadEnter' ? setEditMoney(false) : null}}
             />
           </div>
         ) : (
