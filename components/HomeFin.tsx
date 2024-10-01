@@ -2,6 +2,7 @@
 import { useState } from "react";
 import LeftSalary from "./LeftSalary";
 import LeftVA from "./LeftVA";
+import Overtime from "./Overtime";
 
 interface CalcTotalProp{
   
@@ -16,6 +17,7 @@ export default function HomeFin() {
       <div className="flex-1 flex p-3 gap-3">
        <LeftSalary />
        <LeftVA />
+       <Overtime />
       </div>
     </div>
   )
