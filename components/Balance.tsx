@@ -3,6 +3,7 @@ import { useRef, useState } from "react"
 import { Input } from "./ui/input"
 import { Pencil, Eye, EyeOff } from "lucide-react"
 import { Button } from "./ui/button"
+import { onChangeMoney } from "@/lib/utils"
 
 interface BalanceProp {
   name: string
@@ -14,13 +15,8 @@ export default function Balance(balance: BalanceProp) {
   const [showMoney, setShowMoney] = useState(true)
   const [editMoney, setEditMoney] = useState(false)
 
-  function onChangeMoney(value: string) {
-    let cleanValue = value.replace(/\D/g, "");
-    let formattedValue = (Number(cleanValue) / 100).toLocaleString('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    });
-    setMoney(formattedValue);
+  function changeMoney(value: string) {
+    setMoney(onChangeMoney(value));
   }
 
   function handleMoney() {
@@ -40,11 +36,11 @@ export default function Balance(balance: BalanceProp) {
           <div className="flex items-center">
             <Input
               className="font-bold"
-              onSubmit={()=> null}
+              onSubmit={() => null}
               value={money}
-              onChange={(evt) => onChangeMoney(evt.target.value)}
+              onChange={(evt) => changeMoney(evt.target.value)}
               ref={inputRef}
-              onKeyDown={(key) => {key.code === 'Enter' || key.code === 'NumpadEnter' ? setEditMoney(false) : null}}
+              onKeyDown={(key) => { key.code === 'Enter' || key.code === 'NumpadEnter' ? setEditMoney(false) : null }}
             />
           </div>
         ) : (
